@@ -9,7 +9,7 @@ if __name__ == '__main__':
     #from scripts.evaluate_panda_parallel_script import evaluate
     #from scripts.eval_point import evaluate
     #from scripts.evaluate_safe_parallel_eval import evaluate
-    from scripts.evaluate_safe_grid import evaluate
+    from scripts.safe_grid.evaluate_safe_grid import evaluate
     #from scripts.evaluate_safe_parallel_eval_multiple import evaluate
     #from scripts.evaluate_parallel_line import evaluate
     #from scripts.hpo_safe_parallel_eval_multiple import hpo
