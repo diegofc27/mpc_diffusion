@@ -1,0 +1,246 @@
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 49, in main
+    dataset = dataset_config()
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 65, in __call__
+    instance = self._class(*args, **kwargs, **self._dict)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/sequence.py", line 31, in __init__
+    fields = ReplayBuffer(max_n_episodes, max_path_length, termination_penalty)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/buffer.py", line 12, in __init__
+    'path_lengths': np.zeros(max_n_episodes, dtype=np.int),
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/numpy/__init__.py", line 305, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'int'.
+`np.int` was a deprecated alias for the builtin `int`. To avoid this error in existing code, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 175, in main
+    trainer.train(n_train_steps=Config.n_steps_per_epoch)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/training.py", line 127, in train
+    self.save()
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/training.py", line 161, in save
+    os.makedirs(savepath, exist_ok=True)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/os.py", line 213, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/os.py", line 213, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/os.py", line 213, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  [Previous line repeated 5 more times]
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/os.py", line 223, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '/home/aajay'
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 25, in main
+    wandb.init(
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 1169, in init
+    raise e
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 1150, in init
+    run = wi.init()
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 769, in init
+    raise error
+wandb.errors.CommError: It appears that you do not have permission to access the requested resource. Please reach out to the project owner to grant you access. If you have the correct permissions, verify that there are no issues with your networking setup.(Error 404: Not Found)
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 138, in main
+    trainer_config = utils.Config(
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 36, in __init__
+    logger.save_pkl(self, savepath)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/ml_logger.py", line 1028, in save_pkl
+    pickle.dump(data, tfile)
+TypeError: cannot pickle 'module' object
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 138, in main
+    trainer_config = utils.Config(
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 36, in __init__
+    logger.save_pkl(self, savepath)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/ml_logger.py", line 1028, in save_pkl
+    pickle.dump(data, tfile)
+TypeError: cannot pickle 'module' object
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 138, in main
+    trainer_config = utils.Config(
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 36, in __init__
+    logger.save_pkl(self, savepath)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/ml_logger.py", line 1028, in save_pkl
+    pickle.dump(data, tfile)
+TypeError: cannot pickle 'module' object
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 60, in main
+    dataset = dataset_config()
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 65, in __call__
+    instance = self._class(*args, **kwargs, **self._dict)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/sequence.py", line 30, in __init__
+    self.include_skills = context_len
+NameError: name 'context_len' is not defined
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 60, in main
+    dataset = dataset_config()
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 65, in __call__
+    instance = self._class(*args, **kwargs, **self._dict)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/sequence.py", line 35, in __init__
+    fields.add_path(episode)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/buffer.py", line 66, in add_path
+    assert path_length <= self.max_path_length
+AssertionError
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 69, in main
+    model_config = utils.Config(
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 25, in __init__
+    self._class = import_class(_class)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 16, in import_class
+    module = importlib.import_module(f'{repo_name}.{module_name}')
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/__init__.py", line 1, in <module>
+    from .temporal import TemporalUnet, TemporalValue, MLPnet
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/temporal.py", line 166
+    self.mask_dist = Bernoulli(probs=1-self.condition_dropout)
+                                                             ^
+IndentationError: unindent does not match any outer indentation level
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 69, in main
+    model_config = utils.Config(
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 25, in __init__
+    self._class = import_class(_class)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 16, in import_class
+    module = importlib.import_module(f'{repo_name}.{module_name}')
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/__init__.py", line 1, in <module>
+    from .temporal import TemporalUnet, TemporalValue, MLPnet
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/temporal.py", line 390
+    def forward(self, x, cond, time, returns=None, skills=None use_dropout=True, force_dropout=False):
+                                                               ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 184, in main
+    n_epochs = int(Config.n_train_steps // Config.n_steps_per_epoch)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 184, in main
+    n_epochs = int(Config.n_train_steps // Config.n_steps_per_epoch)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 39, in main
+    dataset_config = utils.Config(
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 25, in __init__
+    self._class = import_class(_class)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 18, in import_class
+    _class = getattr(module, class_name)
+AttributeError: module 'diffuser.datasets' has no attribute 'SkillsDataset'
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 60, in main
+    dataset = dataset_config()
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 65, in __call__
+    instance = self._class(*args, **kwargs, **self._dict)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/sequence.py", line 109, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/sequence.py", line 22, in __init__
+    self.env = env = load_environment(env)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/d4rl.py", line 37, in load_environment
+    wrapped_env = gym.make(name)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/gymnasium/envs/registration.py", line 740, in make
+    env_spec = _find_spec(id)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/gymnasium/envs/registration.py", line 537, in _find_spec
+    _check_version_exists(ns, name, version)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/gymnasium/envs/registration.py", line 403, in _check_version_exists
+    _check_name_exists(ns, name)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/gymnasium/envs/registration.py", line 380, in _check_name_exists
+    raise error.NameNotFound(
+gymnasium.error.NameNotFound: Environment `hopper-medium-expert` doesn't exist.
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 60, in main
+    dataset = dataset_config()
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 65, in __call__
+    instance = self._class(*args, **kwargs, **self._dict)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/sequence.py", line 109, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/sequence.py", line 22, in __init__
+    self.env = env = load_environment(env)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/d4rl.py", line 37, in load_environment
+    wrapped_env = gym.make(name)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/gymnasium/envs/registration.py", line 740, in make
+    env_spec = _find_spec(id)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/gymnasium/envs/registration.py", line 537, in _find_spec
+    _check_version_exists(ns, name, version)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/gymnasium/envs/registration.py", line 403, in _check_version_exists
+    _check_name_exists(ns, name)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/gymnasium/envs/registration.py", line 380, in _check_name_exists
+    raise error.NameNotFound(
+gymnasium.error.NameNotFound: Environment `hopper-medium-expert` doesn't exist.
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 60, in main
+    dataset = dataset_config()
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/utils/config.py", line 65, in __call__
+    instance = self._class(*args, **kwargs, **self._dict)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/sequence.py", line 109, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/sequence.py", line 22, in __init__
+    self.env = env = load_environment(env)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/datasets/d4rl.py", line 37, in load_environment
+    wrapped_env = gym.make(name)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/gymnasium/envs/registration.py", line 740, in make
+    env_spec = _find_spec(id)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/gymnasium/envs/registration.py", line 537, in _find_spec
+    _check_version_exists(ns, name, version)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/gymnasium/envs/registration.py", line 403, in _check_version_exists
+    _check_name_exists(ns, name)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/gymnasium/envs/registration.py", line 380, in _check_name_exists
+    raise error.NameNotFound(
+gymnasium.error.NameNotFound: Environment `hopper-medium-expert` doesn't exist.
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 8, in main
+    RUN._update(deps)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/train.py", line 8, in main
+    RUN._update(deps)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/fernandi/miniconda3/envs/dd/lib/python3.8/bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit

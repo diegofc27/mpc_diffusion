@@ -1,0 +1,529 @@
+══════════════════════════════════════════
+[33m        job         [0m
+────────────────────┬─────────────────────
+    script_path     │ None                
+    script_root     │ /home/fernandi/projects/decision-diffuser/code/analysis
+      counter       │ 2                   
+       prefix       │ diffuser/safe_omni_combine_basic_3
+        name        │ safe_job            
+       status       │ created             
+     createTime     │ 2023-10-24 11:23:28.320775
+════════════════════╧═════════════════════
+[33m      revision      [0m
+────────────────────┬─────────────────────
+        hash        │ 01ce528c30b4733dc59aa6203e46ec165561158d
+       branch       │ refs/heads/main     
+════════════════════╧═════════════════════
+[33m         fn         [0m
+────────────────────┬─────────────────────
+        name        │ evaluate            
+        doc         │ None                
+       module       │ scripts.evaluate_safe_parallel_eval
+        file        │ /home/fernandi/projects/decision-diffuser/code/scripts/evaluate_safe_parallel_eval.py
+════════════════════╧═════════════════════
+[33m        args        [0m
+────────────────────┬─────────────────────
+()
+════════════════════╧═════════════════════
+[33m       kwargs       [0m
+────────────────────┬─────────────────────
+     RUN.prefix     │ diffuser/safe_omni_combine_basic_3
+     wandb_name     │ safe_omni_combine_basic_3
+   max_n_episodes   │ 4054                
+   action_weight    │ 2                   
+   loss_discount    │ 0.99                
+   skill_dataset    │ ipo_ppo_69_4k       
+  save_checkpoints  │ False               
+        seed        │ 1234789             
+ returns_condition  │ False               
+  skills_condition  │ True                
+  predict_epsilon   │ True                
+ n_diffusion_steps  │ 300                 
+ condition_dropout  │ 0.25                
+     diffusion      │ models.GaussianDiffusionSkills
+      dataset       │ SafetyPointButton3-v0
+       loader       │ datasets.SkillsDataset
+  max_path_length   │ 1000                
+      horizon       │ 12                  
+   n_train_steps    │ 2010000.0           
+   returns_scale    │ 400.0               
+  RUN.job_counter   │ 1                   
+    RUN.job_name    │ safe_job            
+════════════════════╧═════════════════════
+taking diff, if this step takes too long, check if your uncommitted changes are too large.
+══════════════════════════════════════════
+[33m        job         [0m
+────────────────────┬─────────────────────
+       job_id       │ None                
+       status       │ started             
+     startTime      │ 2023-10-24 11:23:50.725616
+════════════════════╧═════════════════════
+[33m        host        [0m
+────────────────────┬─────────────────────
+      hostname      │ nrgpu3.informatik.privat
+════════════════════╧═════════════════════
+══════════════════════════════════════════
+[33m       Config       [0m
+────────────────────┬─────────────────────
+        seed        │ 1234789             
+       device       │ cuda:6              
+       bucket       │ /home/fernandi/projects/decision-diffuser/code/weights/
+        runs        │ /home/fernandi/projects/decision-diffuser/code/
+      dataset       │ SafetyPointButton3-v0
+       model        │ models.TemporalUnet 
+     diffusion      │ models.GaussianDiffusionSkills
+      horizon       │ 12                  
+ n_diffusion_steps  │ 300                 
+   action_weight    │ 2                   
+    loss_weights    │ None                
+   loss_discount    │ 0.99                
+  predict_epsilon   │ True                
+     dim_mults      │ (1, 4, 8)           
+ returns_condition  │ False               
+  skills_condition  │ True                
+   goal_condition   │ False               
+    calc_energy     │ False               
+        dim         │ 128                 
+ condition_dropout  │ 0.25                
+condition_guidance_w│ 1.2                 
+      test_ret      │ 0.9                 
+      renderer      │ utils.MuJoCoRenderer
+     attention      │ False               
+     include_xy     │ False               
+       loader       │ datasets.SkillsDataset
+     normalizer     │ CDFNormalizer       
+   preprocess_fns   │ []                  
+   clip_denoised    │ True                
+    use_padding     │ True                
+  include_returns   │ True                
+   include_costs    │ False               
+      discount      │ 0.99                
+  max_path_length   │ 1000                
+     hidden_dim     │ 256                 
+       ar_inv       │ False               
+   train_only_inv   │ False               
+termination_penalty │ -100                
+   returns_scale    │ 400.0               
+    costs_scale     │ 130                 
+   max_n_episodes   │ 4054                
+   point_dataset    │ xy_dataset_20       
+   skill_dataset    │ ipo_ppo_69_4k       
+ n_steps_per_epoch  │ 10000               
+     loss_type      │ l2                  
+   n_train_steps    │ 2010000.0           
+     batch_size     │ 32                  
+   learning_rate    │ 0.0002              
+gradient_accumulate_every│ 2                   
+     ema_decay      │ 0.995               
+      log_freq      │ 1000                
+     save_freq      │ 10000               
+    sample_freq     │ 10000               
+      n_saves       │ 5                   
+   save_parallel    │ False               
+    n_reference     │ 8                   
+  save_checkpoints  │ False               
+   wandb_project    │ decision-diffuser   
+    wandb_entity    │ diegofc             
+    wandb_group     │ PandaPush-v3        
+     wandb_tags     │ ['decision-diffuser']
+     wandb_name     │ safe_omni_combine_basic_3
+════════════════════╧═════════════════════
+[33m        RUN         [0m
+────────────────────┬─────────────────────
+       server       │ /home/fernandi/projects/decision-diffuser/code
+      username      │ fernandi            
+      project       │ diffuser            
+    script_root     │ /home/fernandi/projects/decision-diffuser/code/analysis
+    script_path     │ None                
+        now         │ 2023-10-24 13:23:16.963252+02:00
+       prefix       │ diffuser/safe_omni_combine_basic_3
+      job_name      │ safe_job            
+    job_counter     │ 1                   
+       resume       │ True                
+       readme       │ None                
+       debug        │ False               
+CUDA_VISIBLE_DEVICES│ None                
+     file_stem      │ eval                
+════════════════════╧═════════════════════
+59778366
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/evaluate_safe_parallel_eval.py", line 198, in evaluate
+    frames.append(envs.render())
+  File "/home/fernandi/projects/omnisafe/omnisafe/envs/safety_gymnasium_env.py", line 230, in render
+    return self._env.render()
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/gymnasium/core.py", line 418, in render
+    return self.env.render()
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/gymnasium/core.py", line 418, in render
+    return self.env.render()
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/gymnasium/wrappers/order_enforcing.py", line 70, in render
+    return self.env.render(*args, **kwargs)
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/gymnasium/wrappers/env_checker.py", line 63, in render
+    return env_render_passive_checker(self.env, *args, **kwargs)
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/gymnasium/utils/passive_env_checker.py", line 391, in env_render_passive_checker
+    result = env.render()
+  File "/home/fernandi/projects/safety-gymnasium/safety_gymnasium/builder.py", line 317, in render
+    return self.task.render(cost=self.cost, **asdict(self.render_parameters))
+  File "/home/fernandi/projects/safety-gymnasium/safety_gymnasium/bases/underlying.py", line 515, in render
+    self._get_viewer(mode)
+  File "/home/fernandi/projects/safety-gymnasium/safety_gymnasium/bases/underlying.py", line 568, in _get_viewer
+    self.viewer = OffScreenViewer(self.model, self.data)
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/gymnasium/envs/mujoco/mujoco_rendering.py", line 144, in __init__
+    super().__init__(model, data, width, height)
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/gymnasium/envs/mujoco/mujoco_rendering.py", line 61, in __init__
+    self.con = mujoco.MjrContext(self.model, mujoco.mjtFontScale.mjFONTSCALE_150)
+mujoco.FatalError: gladLoadGL error
+
+══════════════════════════════════════════
+[33m        job         [0m
+────────────────────┬─────────────────────
+       status       │ errored             
+     errorTime      │ 2023-10-24 11:26:45.588955
+════════════════════╧═════════════════════
+══════════════════════════════════════════
+[33m        job         [0m
+────────────────────┬─────────────────────
+    script_path     │ None                
+    script_root     │ /home/fernandi/projects/decision-diffuser/code/analysis
+      counter       │ 2                   
+       prefix       │ diffuser/safe_omni_combine_basic_3
+        name        │ safe_job            
+       status       │ created             
+     createTime     │ 2023-10-24 11:37:45.927576
+════════════════════╧═════════════════════
+[33m      revision      [0m
+────────────────────┬─────────────────────
+        hash        │ 01ce528c30b4733dc59aa6203e46ec165561158d
+       branch       │ refs/heads/main     
+════════════════════╧═════════════════════
+[33m         fn         [0m
+────────────────────┬─────────────────────
+        name        │ evaluate            
+        doc         │ None                
+       module       │ scripts.evaluate_safe_parallel_eval
+        file        │ /home/fernandi/projects/decision-diffuser/code/scripts/evaluate_safe_parallel_eval.py
+════════════════════╧═════════════════════
+[33m        args        [0m
+────────────────────┬─────────────────────
+()
+════════════════════╧═════════════════════
+[33m       kwargs       [0m
+────────────────────┬─────────────────────
+     RUN.prefix     │ diffuser/safe_omni_combine_basic_3
+     wandb_name     │ safe_omni_combine_basic_3
+   max_n_episodes   │ 4054                
+   action_weight    │ 2                   
+   loss_discount    │ 0.99                
+   skill_dataset    │ ipo_ppo_69_4k       
+  save_checkpoints  │ False               
+        seed        │ 1234789             
+ returns_condition  │ False               
+  skills_condition  │ True                
+  predict_epsilon   │ True                
+ n_diffusion_steps  │ 300                 
+ condition_dropout  │ 0.25                
+     diffusion      │ models.GaussianDiffusionSkills
+      dataset       │ SafetyPointButton3-v0
+       loader       │ datasets.SkillsDataset
+  max_path_length   │ 1000                
+      horizon       │ 12                  
+   n_train_steps    │ 2010000.0           
+   returns_scale    │ 400.0               
+  RUN.job_counter   │ 1                   
+    RUN.job_name    │ safe_job            
+════════════════════╧═════════════════════
+taking diff, if this step takes too long, check if your uncommitted changes are too large.
+══════════════════════════════════════════
+[33m        job         [0m
+────────────────────┬─────────────────────
+       job_id       │ None                
+       status       │ started             
+     startTime      │ 2023-10-24 11:38:13.930533
+════════════════════╧═════════════════════
+[33m        host        [0m
+────────────────────┬─────────────────────
+      hostname      │ nrgpu3.informatik.privat
+════════════════════╧═════════════════════
+══════════════════════════════════════════
+[33m       Config       [0m
+────────────────────┬─────────────────────
+        seed        │ 1234789             
+       device       │ cuda:6              
+       bucket       │ /home/fernandi/projects/decision-diffuser/code/weights/
+        runs        │ /home/fernandi/projects/decision-diffuser/code/
+      dataset       │ SafetyPointButton3-v0
+       model        │ models.TemporalUnet 
+     diffusion      │ models.GaussianDiffusionSkills
+      horizon       │ 12                  
+ n_diffusion_steps  │ 300                 
+   action_weight    │ 2                   
+    loss_weights    │ None                
+   loss_discount    │ 0.99                
+  predict_epsilon   │ True                
+     dim_mults      │ (1, 4, 8)           
+ returns_condition  │ False               
+  skills_condition  │ True                
+   goal_condition   │ False               
+    calc_energy     │ False               
+        dim         │ 128                 
+ condition_dropout  │ 0.25                
+condition_guidance_w│ 1.2                 
+      test_ret      │ 0.9                 
+      renderer      │ utils.MuJoCoRenderer
+     attention      │ False               
+     include_xy     │ False               
+       loader       │ datasets.SkillsDataset
+     normalizer     │ CDFNormalizer       
+   preprocess_fns   │ []                  
+   clip_denoised    │ True                
+    use_padding     │ True                
+  include_returns   │ True                
+   include_costs    │ False               
+      discount      │ 0.99                
+  max_path_length   │ 1000                
+     hidden_dim     │ 256                 
+       ar_inv       │ False               
+   train_only_inv   │ False               
+termination_penalty │ -100                
+   returns_scale    │ 400.0               
+    costs_scale     │ 130                 
+   max_n_episodes   │ 4054                
+   point_dataset    │ xy_dataset_20       
+   skill_dataset    │ ipo_ppo_69_4k       
+ n_steps_per_epoch  │ 10000               
+     loss_type      │ l2                  
+   n_train_steps    │ 2010000.0           
+     batch_size     │ 32                  
+   learning_rate    │ 0.0002              
+gradient_accumulate_every│ 2                   
+     ema_decay      │ 0.995               
+      log_freq      │ 1000                
+     save_freq      │ 10000               
+    sample_freq     │ 10000               
+      n_saves       │ 5                   
+   save_parallel    │ False               
+    n_reference     │ 8                   
+  save_checkpoints  │ False               
+   wandb_project    │ decision-diffuser   
+    wandb_entity    │ diegofc             
+    wandb_group     │ PandaPush-v3        
+     wandb_tags     │ ['decision-diffuser']
+     wandb_name     │ safe_omni_combine_basic_3
+════════════════════╧═════════════════════
+[33m        RUN         [0m
+────────────────────┬─────────────────────
+       server       │ /home/fernandi/projects/decision-diffuser/code
+      username      │ fernandi            
+      project       │ diffuser            
+    script_root     │ /home/fernandi/projects/decision-diffuser/code/analysis
+    script_path     │ None                
+        now         │ 2023-10-24 13:37:35.201378+02:00
+       prefix       │ diffuser/safe_omni_combine_basic_3
+      job_name      │ safe_job            
+    job_counter     │ 1                   
+       resume       │ True                
+       readme       │ None                
+       debug        │ False               
+CUDA_VISIBLE_DEVICES│ None                
+     file_stem      │ eval                
+════════════════════╧═════════════════════
+59778366
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/evaluate_safe_parallel_eval.py", line 211, in evaluate
+    samples = trainer.ema_model.conditional_sample(conditions, skills=skills)
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/diffusion.py", line 749, in conditional_sample
+    return self.p_sample_loop(shape, cond, skills=skills, *args, **kwargs)
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/diffusion.py", line 720, in p_sample_loop
+    x = apply_conditioning(x, cond, self.action_dim)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/helpers.py", line 100, in apply_conditioning
+    x[:, t, :] = val.clone()
+RuntimeError: The expanded size of the tensor (62) must match the existing size (60) at non-singleton dimension 1.  Target sizes: [1, 62].  Tensor sizes: [60]
+
+══════════════════════════════════════════
+[33m        job         [0m
+────────────────────┬─────────────────────
+       status       │ errored             
+     errorTime      │ 2023-10-24 11:40:36.672647
+════════════════════╧═════════════════════
+══════════════════════════════════════════
+[33m        job         [0m
+────────────────────┬─────────────────────
+    script_path     │ None                
+    script_root     │ /home/fernandi/projects/decision-diffuser/code/analysis
+      counter       │ 2                   
+       prefix       │ diffuser/safe_omni_combine_basic_3
+        name        │ safe_job            
+       status       │ created             
+     createTime     │ 2023-10-24 11:58:21.616179
+════════════════════╧═════════════════════
+[33m      revision      [0m
+────────────────────┬─────────────────────
+        hash        │ 01ce528c30b4733dc59aa6203e46ec165561158d
+       branch       │ refs/heads/main     
+════════════════════╧═════════════════════
+[33m         fn         [0m
+────────────────────┬─────────────────────
+        name        │ evaluate            
+        doc         │ None                
+       module       │ scripts.evaluate_safe_parallel_eval
+        file        │ /home/fernandi/projects/decision-diffuser/code/scripts/evaluate_safe_parallel_eval.py
+════════════════════╧═════════════════════
+[33m        args        [0m
+────────────────────┬─────────────────────
+()
+════════════════════╧═════════════════════
+[33m       kwargs       [0m
+────────────────────┬─────────────────────
+     RUN.prefix     │ diffuser/safe_omni_combine_basic_3
+     wandb_name     │ safe_omni_combine_basic_3
+   max_n_episodes   │ 4054                
+   action_weight    │ 2                   
+   loss_discount    │ 0.99                
+   skill_dataset    │ ipo_ppo_69_4k       
+  save_checkpoints  │ False               
+        seed        │ 1234789             
+ returns_condition  │ False               
+  skills_condition  │ True                
+  predict_epsilon   │ True                
+ n_diffusion_steps  │ 300                 
+ condition_dropout  │ 0.25                
+     diffusion      │ models.GaussianDiffusionSkills
+      dataset       │ SafetyPointButton3-v0
+       loader       │ datasets.SkillsDataset
+  max_path_length   │ 1000                
+      horizon       │ 12                  
+   n_train_steps    │ 2010000.0           
+   returns_scale    │ 400.0               
+  RUN.job_counter   │ 1                   
+    RUN.job_name    │ safe_job            
+════════════════════╧═════════════════════
+taking diff, if this step takes too long, check if your uncommitted changes are too large.
+══════════════════════════════════════════
+[33m        job         [0m
+────────────────────┬─────────────────────
+       job_id       │ None                
+       status       │ started             
+     startTime      │ 2023-10-24 11:59:51.389138
+════════════════════╧═════════════════════
+[33m        host        [0m
+────────────────────┬─────────────────────
+      hostname      │ nrgpu3.informatik.privat
+════════════════════╧═════════════════════
+══════════════════════════════════════════
+[33m       Config       [0m
+────────────────────┬─────────────────────
+        seed        │ 1234789             
+       device       │ cuda:6              
+       bucket       │ /home/fernandi/projects/decision-diffuser/code/weights/
+        runs        │ /home/fernandi/projects/decision-diffuser/code/
+      dataset       │ SafetyPointButton3-v0
+       model        │ models.TemporalUnet 
+     diffusion      │ models.GaussianDiffusionSkills
+      horizon       │ 12                  
+ n_diffusion_steps  │ 300                 
+   action_weight    │ 2                   
+    loss_weights    │ None                
+   loss_discount    │ 0.99                
+  predict_epsilon   │ True                
+     dim_mults      │ (1, 4, 8)           
+ returns_condition  │ False               
+  skills_condition  │ True                
+   goal_condition   │ False               
+    calc_energy     │ False               
+        dim         │ 128                 
+ condition_dropout  │ 0.25                
+condition_guidance_w│ 1.2                 
+      test_ret      │ 0.9                 
+      renderer      │ utils.MuJoCoRenderer
+     attention      │ False               
+     include_xy     │ False               
+       loader       │ datasets.SkillsDataset
+     normalizer     │ CDFNormalizer       
+   preprocess_fns   │ []                  
+   clip_denoised    │ True                
+    use_padding     │ True                
+  include_returns   │ True                
+   include_costs    │ False               
+      discount      │ 0.99                
+  max_path_length   │ 1000                
+     hidden_dim     │ 256                 
+       ar_inv       │ False               
+   train_only_inv   │ False               
+termination_penalty │ -100                
+   returns_scale    │ 400.0               
+    costs_scale     │ 130                 
+   max_n_episodes   │ 4054                
+   point_dataset    │ xy_dataset_20       
+   skill_dataset    │ ipo_ppo_69_4k       
+ n_steps_per_epoch  │ 10000               
+     loss_type      │ l2                  
+   n_train_steps    │ 2010000.0           
+     batch_size     │ 32                  
+   learning_rate    │ 0.0002              
+gradient_accumulate_every│ 2                   
+     ema_decay      │ 0.995               
+      log_freq      │ 1000                
+     save_freq      │ 10000               
+    sample_freq     │ 10000               
+      n_saves       │ 5                   
+   save_parallel    │ False               
+    n_reference     │ 8                   
+  save_checkpoints  │ False               
+   wandb_project    │ decision-diffuser   
+    wandb_entity    │ diegofc             
+    wandb_group     │ PandaPush-v3        
+     wandb_tags     │ ['decision-diffuser']
+     wandb_name     │ safe_omni_combine_basic_3
+════════════════════╧═════════════════════
+[33m        RUN         [0m
+────────────────────┬─────────────────────
+       server       │ /home/fernandi/projects/decision-diffuser/code
+      username      │ fernandi            
+      project       │ diffuser            
+    script_root     │ /home/fernandi/projects/decision-diffuser/code/analysis
+    script_path     │ None                
+        now         │ 2023-10-24 13:58:10.833610+02:00
+       prefix       │ diffuser/safe_omni_combine_basic_3
+      job_name      │ safe_job            
+    job_counter     │ 1                   
+       resume       │ True                
+       readme       │ None                
+       debug        │ False               
+CUDA_VISIBLE_DEVICES│ None                
+     file_stem      │ eval                
+════════════════════╧═════════════════════
+59778366
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/evaluate_safe_parallel_eval.py", line 211, in evaluate
+    samples = trainer.ema_model.conditional_sample(conditions, skills=skills)
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/diffusion.py", line 749, in conditional_sample
+    return self.p_sample_loop(shape, cond, skills=skills, *args, **kwargs)
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/diffusion.py", line 726, in p_sample_loop
+    x = self.p_sample(x, cond, timesteps, skills=skills)
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/diffusion.py", line 708, in p_sample
+    model_mean, _, model_log_variance = self.p_mean_variance(x=x, cond=cond, t=t ,skills=skills)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/diffusion.py", line 683, in p_mean_variance
+    delta_acc +=self.condition_guidance_w[i]*(epsilon_cond - epsilon_uncond)
+TypeError: 'float' object is not subscriptable
+
+══════════════════════════════════════════
+[33m        job         [0m
+────────────────────┬─────────────────────
+       status       │ errored             
+     errorTime      │ 2023-10-24 12:02:10.693472
+════════════════════╧═════════════════════

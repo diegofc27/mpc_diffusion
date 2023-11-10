@@ -1,0 +1,8 @@
+__pycache__/
+.pickle
+#ADD WANDB TO IGNORE
+code/wandb/*
+code/diffuser/runs/*
+code/skills/*
+code/weights/*
+code/skills/analysis/*

@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/ml_logger/__init__.py", line 203, in thunk
+    results = fn(*(args or ARGS), **_KWARGS)
+  File "/home/fernandi/projects/decision-diffuser/code/scripts/evaluate_safe_parallel_eval.py", line 211, in evaluate
+    samples = trainer.ema_model.conditional_sample(conditions, skills=skills)
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/diffusion.py", line 749, in conditional_sample
+    return self.p_sample_loop(shape, cond, skills=skills, *args, **kwargs)
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/diffusion.py", line 726, in p_sample_loop
+    x = self.p_sample(x, cond, timesteps, skills=skills)
+  File "/home/fernandi/miniconda3/envs/safe3/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/diffusion.py", line 708, in p_sample
+    model_mean, _, model_log_variance = self.p_mean_variance(x=x, cond=cond, t=t ,skills=skills)
+  File "/home/fernandi/projects/decision-diffuser/code/diffuser/models/diffusion.py", line 683, in p_mean_variance
+    delta_acc +=self.condition_guidance_w[i]*(epsilon_cond - epsilon_uncond)
+TypeError: 'float' object is not subscriptable
