@@ -9,6 +9,7 @@ from copy import deepcopy
 #from scripts.eval_parallel import eval_diffusion
 #from scripts.evaluate_safe_parallel import eval_diffusion
 #from scripts.evaluate_safe_multiple import eval_diffusion_multiple
+from scripts.safe_grid.evaluate_safe_grid_multiple import evaluate
 from .arrays import batch_to_device, to_np, to_device, apply_dict
 from .timer import Timer
 from .cloud import sync_logs
@@ -134,24 +135,24 @@ class Trainer(object):
             if self.step % self.save_freq == 0:
                 self.save()
 
-            # if self.step % self.test_freq == 0 and self.step > 0:
-            #     steps = 1000
-            #     reward, cost =eval_diffusion_multiple(self.ema_model, self.dataset, self.config, eval_steps=steps, idx=self.step)
-            #     if reward > self.best_reward:
-            #         self.best_reward = reward
-            #         self.save_best()
-            #     log = {}
-            #     log["avg reward"]  = reward
-            #     log["avg cost"] = cost
-            #     self.wandb.log(log)
-            #     print("LOG: ",log)
+            if self.step % self.test_freq == 0 and self.step > 0:
+                reward, cost, success_rate =evaluate(self.ema_model, self.dataset, self.config)
+                # if reward > self.best_reward:
+                #     self.best_reward = reward
+                #     self.save_best()
+                log = {}
+                log["avg reward"]  = reward
+                log["avg cost"] = cost
+                log["success rate"] = success_rate
+                self.wandb.log(log)
+                print("LOG: ",log)
             
-            if self.step % self.render_freq == 0 and self.step > 0:
-                steps = 1000
-                reward, cost =eval_diffusion(self.ema_model, self.dataset, self.config, eval_steps=steps, idx=self.step)
-                print("RENDER LOG: ")
-                print("Reward: ",reward)
-                print("Cost: ",cost)
+            # if self.step % self.render_freq == 0 and self.step > 0:
+            #     steps = 1000
+            #     reward, cost =eval_diffusion(self.ema_model, self.dataset, self.config, eval_steps=steps, idx=self.step)
+            #     print("RENDER LOG: ")
+            #     print("Reward: ",reward)
+            #     print("Cost: ",cost)
 
             if self.step % self.log_freq == 0:
 

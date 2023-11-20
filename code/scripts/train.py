@@ -22,15 +22,15 @@ def main(**deps):
     torch.backends.cudnn.benchmark = True
     utils.set_seed(Config.seed)
     Config.device = "cuda:4"
-    wandb.init(
-    # set the wandb project where this run will be logged
-        project=Config.wandb_project,
-        entity=Config.wandb_entity,
-        group=Config.wandb_group,
-        name=Config.wandb_name,
-        # track hyperparameters and run metadata
-        config=Config.__dict__
-    )
+    # wandb.init(
+    # # set the wandb project where this run will be logged
+    #     project=Config.wandb_project,
+    #     entity=Config.wandb_entity,
+    #     group=Config.wandb_group,
+    #     name=Config.wandb_name,
+    #     # track hyperparameters and run metadata
+    #     config=Config.__dict__
+    # )
 
     # -----------------------------------------------------------------------------#
     # ---------------------------------- dataset ----------------------------------#
@@ -72,7 +72,7 @@ def main(**deps):
     # -----------------------------------------------------------------------------#
     # ------------------------------ model & trainer ------------------------------#
     # -----------------------------------------------------------------------------#
-    if Config.diffusion == 'models.GaussianInvDynDiffusion' or Config.diffusion == 'models.GaussianInvDynDiffusionSkills':
+    if Config.diffusion == 'models.GaussianInvDynDiffusion' or Config.diffusion == 'models.GaussianInvDynDiffusionSkills' or Config.diffusion == 'models.GaussianStaticInvDynDiffusion':
         model_config = utils.Config(
             Config.model,
             savepath=f'{Config.runs}/model_config.pkl',
@@ -242,6 +242,7 @@ def main(**deps):
         n_reference=Config.n_reference,
         train_device=Config.device,
         save_checkpoints=Config.save_checkpoints,
+        test_freq=Config.test_freq,
         config=Config.__dict__,
         
     )
@@ -254,7 +255,7 @@ def main(**deps):
 
     diffusion = diffusion_config(model)
 
-    trainer = trainer_config(diffusion, dataset, None, wandb=wandb)
+    trainer = trainer_config(diffusion, dataset, None, wandb=None)
    
     loadpath = os.path.join(Config.bucket, logger.prefix, 'checkpoint')
     loadpath = os.path.join(loadpath, 'state.pt')
@@ -271,11 +272,11 @@ def main(**deps):
 
     utils.report_parameters(model)
 
-    logger.print('Testing forward...', end=' ', flush=True)
-    batch = utils.batchify(dataset[0], Config.device)
-    loss, _ = diffusion.loss(*batch)
-    loss.backward()
-    logger.print('✓')
+    # logger.print('Testing forward...', end=' ', flush=True)
+    # batch = utils.batchify(dataset[0], Config.device)
+    # loss, _ = diffusion.loss(*batch)
+    # loss.backward()
+    # logger.print('✓')
     # -----------------------------------------------------------------------------#
     # --------------------------------- main loop ---------------------------------#
     # -----------------------------------------------------------------------------#

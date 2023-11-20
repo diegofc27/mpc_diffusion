@@ -10,6 +10,8 @@ from .buffer import ReplayBuffer
 
 CostBatch = namedtuple('Batch', 'trajectories conditions costs')
 RewardBatch = namedtuple('Batch', 'trajectories conditions returns')
+RewardBatchUnnormed = namedtuple('Batch', 'trajectoriesNormed trajectories conditions returns')
+
 RewardCostBatch = namedtuple('Batch', 'trajectories conditions returns_costs')
 SkillBatch = namedtuple('Batch', 'trajectories conditions skills')
 Batch = namedtuple('Batch', 'trajectories conditions')
@@ -94,9 +96,12 @@ class SequenceDataset(torch.utils.data.Dataset):
         observations = self.fields.normed_observations[path_ind, start:end]
         actions = self.fields.normed_actions[path_ind, start:end]
 
+        observations_unnormed = self.fields.observations[path_ind, start:end]
+        actions_unnormed  = self.fields.actions[path_ind, start:end]
+
         conditions = self.get_conditions(observations)
         trajectories = np.concatenate([actions, observations], axis=-1)
-
+        trajectories_unnormed = np.concatenate([actions_unnormed, observations_unnormed], axis=-1)
         if self.include_returns:
             rewards = self.fields.rewards[path_ind, start:]
             discounts = self.discounts[:len(rewards)]

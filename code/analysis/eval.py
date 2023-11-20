@@ -17,7 +17,7 @@ if __name__ == '__main__':
     from config.locomotion_config import Config
     from params_proto.hyper import Sweep
 
-    sweep = Sweep(RUN, Config).load("/home/fernandi/projects/decision-diffuser/code/analysis/safe_grid/test_diff_returns.jsonl")
+    sweep = Sweep(RUN, Config).load("/home/fernandi/projects/decision-diffuser/code/analysis/safe_grid/dyn/returns_dyn.jsonl")
 
     for kwargs in sweep:
         logger.print(RUN.prefix, color='green')

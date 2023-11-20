@@ -13,8 +13,9 @@ def angle_between(p1, p2):
 
 def main(num_trajectories):
     dataset = defaultdict(list)
+    path = "/home/fernandi/projects/decision-diffuser/code/images/safe_grid"
     pbar = tqdm(total=num_trajectories)
-    for _ in range(num_trajectories):
+    for i in range(num_trajectories):
         env = Safe_Grid()
         state = env.reset()
         goal = state[2:4]
@@ -25,8 +26,8 @@ def main(num_trajectories):
         while not done:
             # get random action
             #random noise 
-            #noise = np.random.normal(-.0, .0, 2)
-            noise = np.array([0,0])
+            noise = np.random.normal(-.1, .1, 2)
+            #noise = np.array([0,0])
             action = actions[step] + noise
 
             state, reward, cost, done, info = env.step(action)
@@ -36,6 +37,7 @@ def main(num_trajectories):
             dataset["costs"].append(cost)
             dataset["terminals"].append(done)
             step+=1
+        env.render(path=path,name=f"safe_grid_data{i}")
         pbar.update(1)
         env.close()
     dataset["observations"] = np.array(dataset["observations"]).reshape(-1,14)
@@ -50,4 +52,4 @@ def main(num_trajectories):
 
 
 if __name__ == "__main__":
-    main(2000)
+    main(10)

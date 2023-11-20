@@ -15,6 +15,7 @@ from pathlib import Path
 import pickle
 from diffuser.environments.safe_grid import Safe_Grid
 import json
+import datetime
 
 def evaluate(**deps):
     from ml_logger import logger, RUN
@@ -37,7 +38,8 @@ def evaluate(**deps):
         prefix = f'predict_epsilon_{Config.n_diffusion_steps}_1000000.0'
     else:
         prefix = f'predict_x0_{Config.n_diffusion_steps}_1000000.0'
-
+    #get last part of path of logger.prefix
+    name_model = logger.prefix.split('/')[-1]
     loadpath = os.path.join(Config.bucket, logger.prefix, 'checkpoint')
     if Config.save_checkpoints:
         loadpath = os.path.join(loadpath, f'state_0.pt')
@@ -65,11 +67,16 @@ def evaluate(**deps):
 
     dataset = dataset_config()
 
+    save_results_path = os.path.join(Config.bucket, logger.prefix)
+    plots_path = os.path.join(save_results_path, 'plots')
+    if not os.path.exists(plots_path):
+        os.makedirs(plots_path)
+
     observation_dim = dataset.observation_dim
     action_dim = dataset.action_dim
     transition_dim = observation_dim + action_dim
 
-    if Config.diffusion == 'models.GaussianInvDynDiffusion' or Config.diffusion ==  'GaussianInvDynDiffusionSkills':
+    if Config.diffusion == 'models.GaussianInvDynDiffusion' or Config.diffusion ==  'GaussianInvDynDiffusionSkills' or Config.diffusion == 'models.GaussianStaticInvDynDiffusion':
         transition_dim = observation_dim  
 
 
@@ -175,17 +182,15 @@ def evaluate(**deps):
     trainer.model.load_state_dict(state_dict['model'])
     trainer.ema_model.load_state_dict(state_dict['ema'])
     device = Config.device
-    num_eval =1
-    envs = Safe_Grid()
-    dones = [0 for _ in range(num_eval)]
-    # episode_rewards = np.array([0 for _ in range(num_eval)])
-    # episode_cost = np.array([0 for _ in range(num_eval)])
-    episode_rewards = np.array([])
-    episode_cost = np.array([])
+    num_eval =100
+    envs = [Safe_Grid() for _ in range(num_eval)]
+    episode_rewards = [0 for _ in range(num_eval)]
+    episode_costs = [0 for _ in range(num_eval)]
     frames = []
     seed = 69
-    obs = envs.reset()
-    print("initial obs: ", obs) 
+    obs = [envs[i].reset() for i in range(num_eval)]
+    dones = [0 for _ in range(num_eval)]
+    obs = np.array(obs)
 
     assert trainer.ema_model.condition_guidance_w == Config.condition_guidance_w
     #skills = to_device(torch.tensor([[1.0,0.0],[0.0,1.0]],dtype=torch.float32).repeat(10,1,1), device)
@@ -193,16 +198,20 @@ def evaluate(**deps):
 
     t=0
     done = False
-    while not done:
+    while sum(dones) <  num_eval:
         obs = dataset.normalizer.normalize(obs, 'observations')
         if num_eval == 1:
             obs = obs[None]
         conditions = {0: to_torch(obs, device=device)}
+
         samples = trainer.ema_model.conditional_sample(conditions, returns=returns)
         #unormed_samples = dataset.normalizer.unnormalize(to_np(samples), 'observations')
         if Config.diffusion == 'models.GaussianDiffusionSkills' or Config.diffusion == 'models.GaussianDiffusionReturns':
-            action = samples[:, :, :2][0,0]
+            action = samples[:, 0, :2]
             action = dataset.normalizer.unnormalize(action.detach().cpu().numpy(), 'actions')
+        elif Config.diffusion == 'models.GaussianStaticInvDynDiffusion':
+            samples = dataset.normalizer.unnormalize(to_np(samples), 'observations')
+            action = samples[:, 1, :2] - samples[:, 0, :2]
         else:
             obs_comb = torch.cat([samples[:, 0, :], samples[:, 1, :]], dim=-1)
             obs_comb = obs_comb.reshape(-1, 2*observation_dim)
@@ -213,20 +222,38 @@ def evaluate(**deps):
 
             if num_eval == 1:
                 action = action[0]
-        print(f"action: {action}")
 
-        obs,reward,cost,done,info=envs.step(action)
-        episode_rewards = np.append(episode_rewards,reward)
-        episode_cost = np.append(episode_cost,cost)
+        #rollout each of the envs and save rewards and costs
+        obs_list = []
+        for i in range(num_eval):
+            obs,reward,cost,done,info=envs[i].step(action[i])
+            obs_list.append(obs[None])
+            if done:
+                if dones[i] == 1:
+                    pass
+                else:
+                    dones[i] = 1
+                    episode_rewards[i] += reward
+                    episode_costs[i] += cost
+                    envs[i].render(path=plots_path,name=f"Safe_Grid_episode_{i}")
+            else:
+                if dones[i] == 1:
+                    pass
+                else:
+                    episode_rewards[i] += reward
+                    episode_costs[i] += cost
+        obs = np.concatenate(obs_list, axis=0)
         t += 1
-    envs.render()
-    total_rewards =episode_rewards.sum(axis=0).mean()
-    total_cost = episode_cost.sum(axis=0).mean()
-    print(f"Avg reward: {total_rewards}")
-    print(f"Avg cost: {total_cost}")
+
+
+        
+    
+    avg_rewards =np.array(episode_rewards).mean()
+    avg_cost = np.array(episode_costs).mean()
+    print(f"Avg reward: {avg_rewards}")
+    print(f"Avg cost: {avg_cost}")
     #results as json
-    save_results_path = os.path.join(Config.bucket, logger.prefix)
-    results = {'rewards':total_rewards, 'cost':total_cost}
+    results = {'rewards':avg_rewards, 'cost':avg_cost}
     with open(os.path.join(save_results_path, 'results.json'), 'w') as f:
         json.dump(results, f)
 

@@ -63,6 +63,7 @@ class Config(ParamsProto):
     log_freq = 1000
     save_freq = 10000
     sample_freq = 10000
+    test_freq = 10000
     n_saves = 5
     save_parallel = False
     n_reference = 8

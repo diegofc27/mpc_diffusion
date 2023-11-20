@@ -136,12 +136,15 @@ class Safe_Grid(gym.Env):
 
         return distaces
 
-    def reset(self):
+    def reset(self, state=None):
         self.history = [] 
         self.acc_reward = 0
         self.acc_cost = 0
         goal = self.get_new_goal()
-        self.state= np.array([np.random.uniform(self.reset_x,self.reset_y),np.random.uniform(self.reset_x,self.reset_y),goal[0],goal[1]])
+        if state is not None:
+            self.state = state
+        else:
+            self.state= np.array([np.random.uniform(self.reset_x,self.reset_y),np.random.uniform(self.reset_x,self.reset_y),goal[0],goal[1]])
         #print(f"Initial position:{self.state[0:2]} Goal position: {self.state[2:4]}")
         self.reward=0
         self.cost=0
@@ -193,7 +196,7 @@ class Safe_Grid(gym.Env):
 
         return cost
 
-    def render(self,extra=None):
+    def render(self,extra=None, path=None, name=None):
         fig, ax = plt.subplots()
         history = np.array(self.history)
         # Plot the goal
@@ -236,7 +239,9 @@ class Safe_Grid(gym.Env):
         plt.title('Safe Grid Rollout')
         plt.grid(True)
         plt.show()
-        plt.savefig('/home/fernandi/projects/decision-diffuser/code/images/safe_grid.png')
+        plt.savefig(f'{path}/{name}.png')
+
+        plt.close()
 
     def close(self):
         # close the environment
